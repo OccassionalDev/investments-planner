@@ -9,5 +9,4 @@ class User < ApplicationRecord
     has_many :types
     has_many :industries
     has_many :categories, through: :industries, source: investment
-
 end
