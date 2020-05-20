@@ -6,6 +6,15 @@ class ApiAdapter {
         "Content-Type": "application/json",
         "Accept": "application/json"
     };
+
+    static post(url, formData) {
+        return fetch(this.standardUrl + url, {
+            method: "POST",
+            headers: this.headerConfig,
+            body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+    };
 }
 
 export default ApiAdapter;
