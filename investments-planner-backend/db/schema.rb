@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_024221) do
+ActiveRecord::Schema.define(version: 2020_05_20_025831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_024221) do
     t.integer "shares"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "type"
+    t.string "invest_type"
     t.string "industry"
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
