@@ -6,7 +6,4 @@ class User < ApplicationRecord
     validates_uniqueness_of :email
 
     has_many :investments
-    has_many :types
-    has_many :industries
-    has_many :categories, through: :industries, source: investment
 end
