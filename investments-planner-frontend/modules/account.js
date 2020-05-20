@@ -3,14 +3,18 @@ import ApiAdapter from '/modules/api-adapter.js';
 class Account {
 
     // Render Sign Up
-    static renderSignUpForm() {
+    static renderSignUpHeader() {
         return `
-        <div id='signup-welcome-container>
+        <div id="signup-header">
             <h1>Welcome!</h1>
             <h2>Please fill out the information below to sign up!</h2>
         </div>
+        `
+    }
 
-        <div id="signup-form-container>
+    static renderSignUpForm() {
+        return `
+        <div id="signup-form">
             <form action="POST">
                 <label for="name">Name</label>
                 <input type="text" name="name" required>
