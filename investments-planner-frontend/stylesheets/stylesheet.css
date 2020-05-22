@@ -1,0 +1,34 @@
+body {
+  font-family: sans-serif;
+  margin-top: 80px;
+  padding: 30px;
+}
+
+body h1 {
+  height: 80px;
+  margin-left: 40px;
+}
+
+body header * {
+  display: inline;
+}
+
+body header li {
+  margin: 20px;
+}
+
+body header {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=stylesheet.css.map */
