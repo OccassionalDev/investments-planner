@@ -30,7 +30,7 @@ class InvestmentsController < ApplicationController
         investment = user.investments.find_by(id: params[:investment_id])
         investment.destroy
 
-        render json: user
+        render json: user, include: ["investments"]
     end 
 
     private 
