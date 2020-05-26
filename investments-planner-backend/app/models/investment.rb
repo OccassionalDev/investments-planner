@@ -4,6 +4,6 @@ class Investment < ApplicationRecord
   validates_presence_of :name, :invest_type, :shares, :industry
 
   def self.industries
-    self.all.map { |investment| investment.industry }.uniq
+    self.all.pluck(:industry).uniq
   end 
 end
