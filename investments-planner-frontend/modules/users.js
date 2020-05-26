@@ -23,7 +23,19 @@ class Users {
     }
 
     static loginForm() {
+        return `
+        <div id="login-form">
+            <form action="POST">
+                <label for="email">Email</label>
+                <input type="email" name="email" required>
 
+                <label for="password">Password</label>
+                <input type="password" name="password" required>
+
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+        `
     }
 
     // Requests
