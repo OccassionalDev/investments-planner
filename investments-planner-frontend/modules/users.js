@@ -10,6 +10,22 @@ class Users {
     static emailLoginField = document.getElementById("login_email")
     static passwordLoginField = document.getElementById("login_password")
 
+    // Current User
+    static currentUser = {}
+    static setCurrentUser(userData, formType) {
+        // Check for any errors
+        if (user.hasOwnProperty("error") && formType === "signup") {
+
+        }
+
+        else if (user.hasOwnProperty("error") && formType === "login") {
+
+        }
+
+        else {
+            this.currentUser = userData;
+        }
+    }
 
     // Form Creation
     static signUpForm() {
@@ -73,8 +89,8 @@ class Users {
         }
 
         Adapter.postRequest("/users", userBody)
-    };
-
+            .then(res => this.setCurrentUser(resp, "signup"))
+    }
 }
 
 export default Users;
