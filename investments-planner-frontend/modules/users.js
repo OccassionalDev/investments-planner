@@ -2,6 +2,11 @@ class Users {
     // Form Creation
     static signUpForm() {
         return `
+        <div id="signup-header">
+            <h1>Sign Up</h1>
+            <h2>Fill out the following to create a new account:</h2>
+        </div>
+
         <div id="signup-form>
             <form action="POST">
                 <label for="name">Name</label>
@@ -24,6 +29,10 @@ class Users {
 
     static loginForm() {
         return `
+        <div id="login-header>
+            <h1>Log In</h1>
+        </div>
+
         <div id="login-form">
             <form action="POST">
                 <label for="email">Email</label>
