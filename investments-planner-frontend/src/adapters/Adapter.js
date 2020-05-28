@@ -8,10 +8,10 @@ class Adapter {
     }
 
     postRequest(url, data) {
-        return fetch(this.baseUrl, {
+        return fetch(this.baseUrl + url, {
             method: "POST",
             headers: this.headerObj,
-            body: JSON.stringify(userData)
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
     }
