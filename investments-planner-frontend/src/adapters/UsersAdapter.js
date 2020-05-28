@@ -7,7 +7,7 @@ class UsersAdapter {
         }
     }
 
-    signUpUser(userData) {
+    signUpRequest(userData) {
         return fetch(this.baseUrl, {
             method: "POST",
             headers: this.headerObj,
