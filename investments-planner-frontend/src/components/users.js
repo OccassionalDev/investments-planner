@@ -1,6 +1,12 @@
 class Users {
     constructor() {
         this.adapter = new Adapter()
+        this.currentUser = {}
+    }
+
+    // Set Current User
+    setCurrentUser(data) {
+        console.log(data)
     }
 
     // Forms 
@@ -24,9 +30,8 @@ class Users {
 
                 <label for="password_confirmation">Confirm Password</label></br>
                 <input type="password" name="password_confirmation" id="signup_password_confirm" required></br>
-
-                <input type="submit" value="Sign Up" id="signup_btn">
             </form>
+            <button id="signup_btn">Sign Up</button>
 
             <p>Already have an account?</p></br>
             <button id="login-btn">Log In</button>
@@ -55,5 +60,27 @@ class Users {
             <button id="signup-btn">Sign Up!</button>
         </div>
         `
+    }
+
+    // Requests
+
+    signUpRequest() {
+        const nameSignUpField = document.getElementById("signup_name")
+        const emailSignUpField = document.getElementById("signup_email")
+        const passwordSignUpField = document.getElementById("signup_password")
+        const passwordConfirmSignUpField = document.getElementById("signup_password_confirm")
+
+        const userData = {
+            user: {
+                name: nameSignUpField.value,
+                email: emailSignUpField.value,
+                password: passwordSignUpField.value,
+                password_confirmation: passwordConfirmSignUpField.value
+            }
+        }
+
+        this.adapter.postRequest("/users", userData)
+            .then(console.log("Creating new user..."))
+            .then(res => setCurrentUser(res))
     }
 }

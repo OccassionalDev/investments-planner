@@ -1,3 +1,3 @@
 const app = new App();
 
-app.renderSignUp();
+app.renderLogin();

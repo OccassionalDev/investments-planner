@@ -17,9 +17,14 @@ class App {
     renderSignUp() {
         this.container.innerHTML = this.users.signUpForm()
         const loginLink = document.getElementById("login-btn")
+        const signUpBtn = document.getElementById("signup_btn")
 
         loginLink.addEventListener("click", () => {
             return this.renderLogin()
+        })
+
+        signUpBtn.addEventListener("click", () => {
+            return this.users.signUpRequest()
         })
     }
 
