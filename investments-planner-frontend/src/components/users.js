@@ -4,9 +4,23 @@ class Users {
         this.currentUser = {}
     }
 
-    // Set Current User
+    // Current User manipulation
     setCurrentUser(data) {
-        console.log(data)
+        if (data.hasOwnProperty("error") && formType === "signup") {
+
+        }
+
+        else if (data.hasOwnProperty("error") && formType === "login") {
+
+        }
+
+        else {
+            this.currentUser = data
+        }  
+    }
+
+    resetCurrentUser() {
+        this.currentUser = {}
     }
 
     // Forms 
@@ -81,6 +95,6 @@ class Users {
 
         this.adapter.postRequest("/users", userData)
             .then(console.log("Creating new user..."))
-            .then(res => setCurrentUser(res))
+            .then(res => setCurrentUser(res, "signup"))
     }
 }

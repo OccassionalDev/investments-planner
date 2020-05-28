@@ -5,6 +5,7 @@ class App {
         this.navBar = document.getElementById("nav-bar")
     }
 
+    // Render Forms
     renderLogin() {
         this.container.innerHTML = this.users.loginForm()
         const signUpLink = document.getElementById("signup-btn")
@@ -26,6 +27,17 @@ class App {
         signUpBtn.addEventListener("click", () => {
             return this.users.signUpRequest()
         })
+    }
+
+    // Render Main Page
+    renderMainPage() {
+
+    }
+
+    // Logout
+    logout() {
+        this.users.logout()
+        this.renderLogin()
     }
 
 
