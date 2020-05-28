@@ -13,19 +13,19 @@ class Users {
 
         <div id="signup-form>
             <form action="POST">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="signup_name" required>
+                <label for="name">Name</label></br>
+                <input type="text" name="name" id="signup_name" required></br>
 
-                <label for="email">Email</label>
-                <input type="email" name="email" id="signup_email" required>
+                <label for="email">Email</label></br>
+                <input type="email" name="email" id="signup_email" required></br>
 
-                <label for="password">Password</label>
-                <input type="password" name="password" id="signup_password" required>
+                <label for="password">Password</label></br>
+                <input type="password" name="password" id="signup_password" required></br>
 
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" name="password_confirmation" id="signup_password_confirm" required>
+                <label for="password_confirmation">Confirm Password</label></br>
+                <input type="password" name="password_confirmation" id="signup_password_confirm" required></br>
 
-                <input type="submit" value="Sign Up id="signup_btn">
+                <input type="submit" value="Sign Up" id="signup_btn">
             </form>
         </div>
         `
