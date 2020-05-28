@@ -1,5 +1,53 @@
 class Users {
     constructor() {
-        this.adapter = new UsersAdapter()
+        this.adapter = new Adapter()
+    }
+
+    // Forms 
+    signUpForm() {
+        return `
+        <div id="signup-header">
+            <h1>Sign Up</h1>
+            <h2>Fill out the following to create a new account:</h2>
+        </div>
+
+        <div id="signup-form>
+            <form action="POST">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="signup_name" required>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="signup_email" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="signup_password" required>
+
+                <label for="password_confirmation">Confirm Password</label>
+                <input type="password" name="password_confirmation" id="signup_password_confirm" required>
+
+                <input type="submit" value="Sign Up id="signup_btn">
+            </form>
+        </div>
+        `
+    }
+
+    loginForm() {
+        return `
+        <div id="login-header>
+            <h1>Log In</h1>
+        </div>
+
+        <div id="login-form">
+            <form action="POST">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="login_email" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="login_password" required>
+
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+        `
     }
 }
