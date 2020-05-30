@@ -93,4 +93,20 @@ class Users {
             .then(console.log("Creating new user..."))
             .then(res => this.setCurrentUser(res))
     }
+    
+    loginRequest() {
+        const emailLoginField = document.getElementById("login_email")
+        const passwordLoginField = document.getElementById("login_password")
+
+        const userData = {
+            user: {
+                email: emailLoginField.value,
+                password: passwordLoginField.value
+            }
+        }
+
+        return this.adapter.postRequest("/sessions", userData)
+            .then(console.log("Logging in..."))
+            .then(res => this.setCurrentUser(res))
+    }
 }
