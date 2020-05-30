@@ -3,6 +3,7 @@ class App {
         this.users = new Users()
         this.container = document.getElementById("content-container")
         this.navBar = document.getElementById("nav-bar")
+        this.errorHandler = new Errors()
     }
 
     // Render Forms
@@ -25,14 +26,47 @@ class App {
         })
 
         signUpBtn.addEventListener("click", () => {
-            return this.users.signUpRequest()
+            this.users.signUpRequest().then(() => {
+            if (this.hasErrors(this.users.currentUser)) {
+                this.renderSignUp()
+                this.errorHandler.signUpError(this.users.currentUser)
+                debugger
+                this.users.resetCurrentUser()
+            }
+        })
         })
     }
 
-    // Render Main Page
-    renderMainPage() {
+    hasErrors(user) {
+        if (user.hasOwnProperty("error")) {
+            return true
+        }
 
+        else {
+            return false
+        }
     }
+
+    // Render Main Page
+    // renderMainPage() {
+        
+    // }
+
+    // renderLoggedInNav() {
+
+    // }
+
+    // renderChart() {
+
+    // }
+
+    // renderTable() {
+
+    // }
+
+    // renderNewInvestment() {
+
+    // }
 
     // Logout
     logout() {
