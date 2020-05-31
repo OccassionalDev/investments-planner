@@ -62,9 +62,20 @@ class App {
         
     // }
 
-    // renderLoggedInNav() {
+    renderLoggedInNav() {
+        const navBar = document.getElementById("nav-bar")
+        navBar.innerHTML = `
+        <h1>Investments Planner</h1>
 
-    // }
+        <p>Hello, ${this.currentUser.name}</p>
+        <button id="logout_btn">Logout</button>
+        `
+
+        const logoutBtn = document.getElementById("logout_btn")
+        logoutBtn.addEventListener("click", () => {
+            this.logout()
+        })
+    }
 
     // renderChart() {
 
@@ -80,9 +91,7 @@ class App {
 
     // Logout
     logout() {
-        this.users.logout()
+        this.users.resetCurrentUser()
         this.renderLogin()
     }
-
-
 }
