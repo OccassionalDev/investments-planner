@@ -59,9 +59,9 @@ class App {
     }
 
     // Render Main Page
-    // renderMainPage() {
-        
-    // }
+    renderMainPage() {
+        this.renderLoggedInNav()
+    }
 
     renderLoggedInNav() {
         const navBar = document.getElementById("nav-bar")
@@ -82,9 +82,18 @@ class App {
 
     // }
 
-    // renderTable() {
-
-    // }
+    renderTable() {
+        return `
+        <table id="invest_tbl">
+            <tr>
+                <td>Company</td>
+                <td>Industry</td>
+                <td>Type</td>
+                <td>Shares</td>
+            </tr>
+        </table>
+        `
+    }
 
     // renderNewInvestment() {
 
