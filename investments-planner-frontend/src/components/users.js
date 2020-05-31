@@ -62,9 +62,8 @@ class Users {
 
                 <label for="password">Password</label></br>
                 <input type="password" name="password" id="login_password" required></br>
-
-                <input type="submit" value="Log In" id="login_btn"></br>
             </form>
+            <button id="login_btn">Log In</button>
 
             <p>Not an existing user?</p></br>
             <button id="signup-btn">Sign Up!</button>

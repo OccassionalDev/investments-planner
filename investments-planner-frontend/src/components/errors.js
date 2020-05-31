@@ -12,7 +12,7 @@ class Errors {
     }
 
     loginError() {
-        const errorHead = document.getElementById("error-header")
+        const errorHeader = document.getElementById("error-header")
         errorHeader.innerHTML = "Invalid Email or Password" 
     }
 }

@@ -10,9 +10,20 @@ class App {
     renderLogin() {
         this.container.innerHTML = this.users.loginForm()
         const signUpLink = document.getElementById("signup-btn")
+        const loginBtn = document.getElementById("login_btn")
 
         signUpLink.addEventListener("click", () => {
             return this.renderSignUp()
+        })
+
+        loginBtn.addEventListener("click", () => {
+            this.users.loginRequest().then(() =>{
+                if (this.hasErrors(this.users.currentUser)) {
+                    this.renderLogin()
+                    this.errorHandler.loginError()
+                    this.users.resetCurrentUser()
+                }
+            })
         })
     } 
 
@@ -30,7 +41,6 @@ class App {
             if (this.hasErrors(this.users.currentUser)) {
                 this.renderSignUp()
                 this.errorHandler.signUpError(this.users.currentUser)
-                debugger
                 this.users.resetCurrentUser()
             }
         })
