@@ -100,6 +100,28 @@ class App {
 
     // }
 
+    renderNewInvestmentForm() {
+        return `
+        <div id="invest-form-container">
+            <form id="new-invest-form">
+                <label for="name">Comapny:</label>
+                <input type="text" name="name" id="invest_form_name">
+
+                <label for="industry">Industry:</label>
+                <input type="text" name="industry" id="invest_form_industry">
+
+                <label for="invest_type">Type:</label>
+                <input type="text" name="invest_type" id="invest_form_type">
+
+                <label for="shares">Shares:</label>
+                <input type="text" name="shares" id="invest_form_shares">
+            </form>
+
+            <button id="add_investment_btn">Add Investment</button>
+        </div>
+        `
+    }
+
     // Get Investments
     getUserInvestments() {
         this.users.currentUser.investments.forEach(investment => {
