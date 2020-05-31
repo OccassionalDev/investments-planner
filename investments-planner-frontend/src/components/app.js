@@ -124,7 +124,7 @@ class App {
                 <input type="text" name="invest_type" id="invest_form_type">
 
                 <label for="shares">Shares:</label>
-                <input type="text" name="shares" id="invest_form_shares">
+                <input type="number" name="shares" id="invest_form_shares" min="1">
             </form>
 
             <button id="add_investment_btn">Add Investment</button>

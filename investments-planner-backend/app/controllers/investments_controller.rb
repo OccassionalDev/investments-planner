@@ -1,9 +1,4 @@
-class InvestmentsController < ApplicationController
-    def index
-        user = User.find_by(id: params[:user_id])
-        investments = user.investments
-    end 
-    
+class InvestmentsController < ApplicationController    
     def create
         user = User.find_by(id: params[:user_id])
         investment = user.investments.create(investment_params)
