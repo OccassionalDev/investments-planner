@@ -5,7 +5,7 @@ class App {
         this.navBar = document.getElementById("nav-bar")
         this.errorHandler = new Errors()
         this.investments = new Investments()
-        this.chart = new Diagram()
+        // this.chart = new Diagram()
     }
 
     // Render Forms
@@ -24,6 +24,10 @@ class App {
                     this.renderLogin()
                     this.errorHandler.loginError()
                     this.users.resetCurrentUser()
+                }
+
+                else {
+                    this.renderMainPage()
                 }
             })
         })
@@ -45,6 +49,10 @@ class App {
                 this.errorHandler.signUpError(this.users.currentUser)
                 this.users.resetCurrentUser()
             }
+
+            else {
+                this.renderMainPage()
+            }
         })
         })
     }
@@ -62,6 +70,8 @@ class App {
     // Render Main Page
     renderMainPage() {
         this.renderLoggedInNav()
+        this.container.innerHTML = `${this.renderNewInvestmentForm()} ${this.renderTable()}`
+        this.getUserInvestments()
     }
 
     renderLoggedInNav() {
@@ -69,7 +79,7 @@ class App {
         navBar.innerHTML = `
         <h1>Investments Planner</h1>
 
-        <p>Hello, ${this.currentUser.name}</p>
+        <p>Hello, ${this.users.currentUser.name}</p>
         <button id="logout_btn">Logout</button>
         `
 
@@ -138,9 +148,9 @@ class App {
 
         // Create Columns
         let nameCol = newRow.insertCell(0)
-        let industryCol = newRow.insertCell(0)
-        let typeCol = newRow.insertCell(0)
-        let sharesCol = newRow.insertCell(0)
+        let industryCol = newRow.insertCell(1)
+        let typeCol = newRow.insertCell(2)
+        let sharesCol = newRow.insertCell(3)
 
         // Create and append Text
         let nameTxt = document.createTextNode(`${investment.name}`)
@@ -155,8 +165,16 @@ class App {
     }
 
     // Logout
+    resetNavBar() {
+        const navBar = document.getElementById("nav-bar")
+        navBar.innerHTML = `
+        <h1>Investments Planner</h1>
+        `
+    }
+
     logout() {
         this.users.resetCurrentUser()
+        this.resetNavBar()
         this.renderLogin()
     }
 }
