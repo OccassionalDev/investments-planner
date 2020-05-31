@@ -4,6 +4,7 @@ class App {
         this.container = document.getElementById("content-container")
         this.navBar = document.getElementById("nav-bar")
         this.errorHandler = new Errors()
+        this.investments = new Investments()
     }
 
     // Render Forms
@@ -88,6 +89,38 @@ class App {
     // renderNewInvestment() {
 
     // }
+
+    // Get Investments
+    getUserInvestments() {
+        this.users.currentUser.investments.forEach(investment => {
+            this.addInvestmentRow(investment)
+        })
+    }
+
+    // Add Table Row
+    addInvestmentRow(investment) {
+        const investmentTbl = document.getElementById("invest_tbl")
+
+        // Insert a new row
+        let newRow = investmentTbl.insertRow(investmentTbl.rows.length)
+
+        // Create Columns
+        let nameCol = newRow.insertCell(0)
+        let industryCol = newRow.insertCell(0)
+        let typeCol = newRow.insertCell(0)
+        let sharesCol = newRow.insertCell(0)
+
+        // Create and append Text
+        let nameTxt = document.createTextNode(`${investment.name}`)
+        let industryTxt = document.createTextNode(`${investment.industry}`)
+        let typeTxt = document.createTextNode(`${investment.invest_type}`)
+        let sharesTxt = document.createTextNode(`${investment.shares}`)
+
+        nameCol.appendChild(nameTxt)
+        industryCol.appendChild(industryTxt)
+        typeCol.appendChild(typeTxt)
+        sharesCol.appendChild(sharesTxt)
+    }
 
     // Logout
     logout() {
