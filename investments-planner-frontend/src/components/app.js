@@ -5,6 +5,7 @@ class App {
         this.navBar = document.getElementById("nav-bar")
         this.errorHandler = new Errors()
         this.investments = new Investments()
+        this.chart = new Diagram()
     }
 
     // Render Forms
