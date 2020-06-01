@@ -20,7 +20,8 @@ class Investments {
         return this.adapter.postRequest(`/users/${userData.id}/investments`, investmentInformation)
     }
 
-    // Edit Investments
-
     // Remove Investments
+    // removeInvestment(userData) {
+
+    // }
 }

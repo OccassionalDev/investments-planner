@@ -15,4 +15,13 @@ class Adapter {
         })
             .then(res => res.json())
     }
+
+    deleteRequest(url, data) {
+        return fetch(this.baseUrl + url, {
+            method: "DELETE",
+            headers: this.headerObj,
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+    }
 }
