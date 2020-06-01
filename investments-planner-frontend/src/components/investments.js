@@ -11,14 +11,13 @@ class Investments {
         const sharesField = document.getElementById("invest_form_shares")
 
         const investmentInformation = {
-            user_id: userData.id,
-            investment_name: nameField.value,
-            investment_industry: industryField.value,
-            investment_type: typeField.value,
-            investment_shares: sharesField.value
+            name: nameField.value,
+            industry: industryField.value,
+            invest_type: typeField.value,
+            shares: sharesField.value
         }
 
-        return this.adapter.postRequest(`/users/${userData}/investments`, investmentInformation)
+        return this.adapter.postRequest(`/users/${userData.id}/investments`, investmentInformation)
     }
 
     // Edit Investments

@@ -72,6 +72,12 @@ class App {
         this.renderLoggedInNav()
         this.container.innerHTML = `${this.renderNewInvestmentForm()} ${this.renderTable()}`
         this.getUserInvestments()
+
+        
+        const newInvestBtn = document.getElementById("add_investment_btn")
+        newInvestBtn.addEventListener("click", () => {
+            this.handleNewSubmit()
+        })
     }
 
     renderLoggedInNav() {
@@ -130,6 +136,34 @@ class App {
             <button id="add_investment_btn">Add Investment</button>
         </div>
         `
+    }
+
+    // Handle New Investment Request
+    handleNewSubmit() {
+        const nameField = document.getElementById("invest_form_name")
+        const industryField = document.getElementById("invest_form_industry")
+        const typeField = document.getElementById("invest_form_type")
+        const sharesField = document.getElementById("invest_form_shares")
+
+        if (nameField.value !== "" && industryField.value !== "" && typeField.value !== "" && sharesField.value !== "") {
+            this.investments.addInvestment(this.users.currentUser).then(res => {
+                this.addInvestmentRow(res.new_investment)
+                this.resetInvestmentForm()
+            })
+        }
+    }
+
+    // Reset Text Boxes On New Investment Form
+    resetInvestmentForm() {
+        let nameField = document.getElementById("invest_form_name")
+        let industryField = document.getElementById("invest_form_industry")
+        let typeField = document.getElementById("invest_form_type")
+        let sharesField = document.getElementById("invest_form_shares")
+
+        nameField.value = ""
+        industryField.value = ""
+        typeField.value = ""
+        sharesField = ""
     }
 
     // Get Investments
