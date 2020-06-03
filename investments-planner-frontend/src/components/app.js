@@ -224,6 +224,19 @@ class App {
 
 
     handleRemove(row) {
+        const investmentInformation = {
+            user_id: this.users.currentUser.id,
+            id: parseInt(row.id),
+            name: row.cells[0].innerHTML,
+            industry: row.cells[1].innerHTML,
+            type: row.cells[2].innerHTML,
+            shares: parseInt(row.cells[3].innerHTML)
+        }
+
+        this.investments.removeInvestment(investmentInformation).then(() => {
+            console.log("Investment Removed.")
+        })
+
         this.removeInvestmentRow(row)
     }
 
