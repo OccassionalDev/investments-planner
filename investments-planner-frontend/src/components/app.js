@@ -95,9 +95,13 @@ class App {
         })
     }
 
-    // renderChart() {
-
-    // }
+    renderChart() {
+        return `
+        <div id="chart-section>
+            <canvas id="portfolio-chart"></canvas>
+        </div>
+        `
+    }
 
     renderTable() {
         return `

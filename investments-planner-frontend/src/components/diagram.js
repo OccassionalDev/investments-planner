@@ -1,6 +1,6 @@
 class Diagram {
     getChart(userData) {
-        let investmentDoughnutChart = new CharacterData(ctx, {
+        let investmentDoughnutChart = new Chart(document.getElementById("portfolio-chart"), {
             type: 'doughnut',
             data: {
                 datasets: userData.industry_shares,
