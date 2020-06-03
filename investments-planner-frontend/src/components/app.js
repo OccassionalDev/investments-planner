@@ -107,6 +107,7 @@ class App {
                 <td>Industry</td>
                 <td>Type</td>
                 <td>Shares</td>
+                <td></td>
             </tr>
         </table>
         `
@@ -186,6 +187,7 @@ class App {
         let industryCol = newRow.insertCell(1)
         let typeCol = newRow.insertCell(2)
         let sharesCol = newRow.insertCell(3)
+        let buttonCol = newRow.insertCell(4)
 
         // Create and append Text
         let nameTxt = document.createTextNode(`${investment.name}`)
@@ -197,10 +199,37 @@ class App {
         industryCol.appendChild(industryTxt)
         typeCol.appendChild(typeTxt)
         sharesCol.appendChild(sharesTxt)
+
+        // Add delete button and the event with it
+        buttonCol.innerHTML = `<button>Delete</button>`
+        buttonCol.addEventListener("click", () => {
+            this.handleRemove(newRow)
+        })
     }
 
-    removeInvestmentRow(index) {
+    // Table delete button functions
+    getRowIndex(rowId) {
+        let index = -1
+        let rows = document.getElementById("invest_tbl").rows 
+
+        for (let i = 0; i < rows.length; i++) {
+            if (rows[i].id === rowId) {
+                index = i;
+                break
+            }
+        }
+
+        return index
+    }
+
+
+    handleRemove(row) {
+        this.removeInvestmentRow(row)
+    }
+
+    removeInvestmentRow(row) {
         const investmentTbl = document.getElementById("invest_tbl")
+        let index = this.getRowIndex(row.id)
         investmentTbl.deleteRow(index)
     }
 
