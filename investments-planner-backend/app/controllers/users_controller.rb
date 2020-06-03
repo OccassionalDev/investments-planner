@@ -6,22 +6,14 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: {
-            id: user.id,
-            name: user.name,
-            password_digest: user.password_digest,
-            recovery_password_digest: user.recovery_password_digest,
-            investments: user.investments,
-            industries: user.investments.industries,
-            industry_shares: user.investments.industry_shares
-        }
+        render json: user_hash(user)
     end 
     
     def create
         user = User.create(user_params)
 
         if user.save 
-            render json: user, include: ["investments"]
+            render json: user_hash(user)
         else 
             render json: { error: user.errors.full_messages }
         end 

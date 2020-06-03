@@ -7,13 +7,15 @@ class InvestmentsController < ApplicationController
 
         render json: {
             user: @user,
+            industries: @user.investments.industries,
+            industry_shares: @user.investments.industry_shares,
             new_investment: investment
         }
     end 
 
     def update
         if @investment.update(investment_params)
-            render json: @user, include: ["investments"]
+            render json: user_hash(@user)
         else 
             render json: { error: @investment.errors.full_messages }
         end 
@@ -21,10 +23,10 @@ class InvestmentsController < ApplicationController
 
     def destroy
         @investment.destroy
-        render json: @user, include: ["investments"]
+        render json: user_hash(@user)
     end 
 
-    private 
+    private  
 
     def find_user 
         @user = User.find_by(id: params[:user_id])
