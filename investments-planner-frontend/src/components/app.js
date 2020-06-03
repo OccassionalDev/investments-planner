@@ -179,6 +179,7 @@ class App {
 
         // Insert a new row
         let newRow = investmentTbl.insertRow(investmentTbl.rows.length)
+        newRow.setAttribute("id", `${investment.id}`)
 
         // Create Columns
         let nameCol = newRow.insertCell(0)
