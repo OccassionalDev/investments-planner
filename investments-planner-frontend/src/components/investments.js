@@ -21,7 +21,7 @@ class Investments {
     }
 
     // Remove Investments
-    // removeInvestment(userData) {
-
-    // }
+    removeInvestment(userData, investmentInformation) {
+        return this.adapter.deleteRequest(`/users/${userData.id}/investments`, investmentInformation)
+    }
 }
