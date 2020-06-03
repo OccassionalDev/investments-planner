@@ -6,7 +6,15 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: user, include: ["investments"]
+        render json: {
+            id: user.id,
+            name: user.name,
+            password_digest: user.password_digest,
+            recovery_password_digest: user.recovery_password_digest,
+            investments: user.investments,
+            industries: user.investments.industries,
+            industry_shares: user.investments.industry_shares
+        }
     end 
     
     def create

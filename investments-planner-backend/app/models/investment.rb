@@ -6,4 +6,15 @@ class Investment < ApplicationRecord
   def self.industries
     self.all.pluck(:industry).uniq
   end 
+
+  def self.industry_shares
+    industries = self.industries
+    shares_list = []
+
+    industries.each do |industry|
+      shares_list.push(self.where(:industry => industry).sum(:shares))
+    end 
+
+    return shares_list
+  end 
 end
