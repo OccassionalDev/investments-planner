@@ -199,6 +199,11 @@ class App {
         sharesCol.appendChild(sharesTxt)
     }
 
+    removeInvestmentRow(index) {
+        const investmentTbl = document.getElementById("invest_tbl")
+        investmentTbl.deleteRow(index)
+    }
+
     // Logout
     resetNavBar() {
         const navBar = document.getElementById("nav-bar")
