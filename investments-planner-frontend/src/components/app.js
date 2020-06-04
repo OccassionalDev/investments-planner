@@ -5,7 +5,7 @@ class App {
         this.navBar = document.getElementById("nav-bar")
         this.errorHandler = new Errors()
         this.investments = new Investments()
-        // this.chart = new Diagram()
+        this.diagram = new Diagram()
     }
 
     // Render Forms
@@ -70,14 +70,15 @@ class App {
     // Render Main Page
     renderMainPage() {
         this.renderLoggedInNav()
-        this.container.innerHTML = `${this.renderNewInvestmentForm()} ${this.renderTable()}`
+        this.container.innerHTML = `${this.renderChart()} ${this.renderNewInvestmentForm()} ${this.renderTable()}`
         this.getUserInvestments()
-
         
         const newInvestBtn = document.getElementById("add_investment_btn")
         newInvestBtn.addEventListener("click", () => {
             this.handleNewSubmit()
         })
+
+        this.diagram.getChart(this.users.currentUser)
     }
 
     renderLoggedInNav() {
@@ -97,7 +98,7 @@ class App {
 
     renderChart() {
         return `
-        <div id="chart-section>
+        <div id="chart-section" style="display: block; width: 40%">
             <canvas id="portfolio-chart"></canvas>
         </div>
         `
