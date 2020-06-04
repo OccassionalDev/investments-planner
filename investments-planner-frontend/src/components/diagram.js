@@ -1,8 +1,6 @@
 class Diagram {
-    getChart(userData) {
-        const ctx = document.getElementById("portfolio-chart")
-
-        new Chart(ctx, {
+    constructor(userData) {
+        this.currentChart = new Chart(document.getElementById("portfolio-chart").getContext("2d"), {
             type: 'doughnut',
             data: {
                 datasets: [{
@@ -32,5 +30,11 @@ class Diagram {
                 }
             }
         })
+    }
+
+    updateChart(newData) {
+        this.currentChart.data.datasets.data = newData.industry_shares
+        this.currentChart.data.labels = newData.industries
+        this.currentChart.update()
     }
 }

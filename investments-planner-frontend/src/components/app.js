@@ -5,7 +5,7 @@ class App {
         this.navBar = document.getElementById("nav-bar")
         this.errorHandler = new Errors()
         this.investments = new Investments()
-        this.diagram = new Diagram()
+        this.diagram
     }
 
     // Render Forms
@@ -72,13 +72,12 @@ class App {
         this.renderLoggedInNav()
         this.container.innerHTML = `${this.renderChart()} ${this.renderNewInvestmentForm()} ${this.renderTable()}`
         this.getUserInvestments()
+        this.diagram = new Diagram(this.users.currentUser)
         
         const newInvestBtn = document.getElementById("add_investment_btn")
         newInvestBtn.addEventListener("click", () => {
             this.handleNewSubmit()
         })
-
-        this.diagram.getChart(this.users.currentUser)
     }
 
     renderLoggedInNav() {
@@ -118,10 +117,6 @@ class App {
         `
     }
 
-    // renderNewInvestment() {
-
-    // }
-
     renderNewInvestmentForm() {
         return `
         <div id="invest-form-container">
@@ -155,6 +150,7 @@ class App {
             this.investments.addInvestment(this.users.currentUser).then(res => {
                 this.addInvestmentRow(res.new_investment)
                 this.resetInvestmentForm()
+                this.diagram.updateChart(res)
             })
         }
     }
@@ -238,8 +234,9 @@ class App {
             shares: parseInt(row.cells[3].innerHTML)
         }
 
-        this.investments.removeInvestment(investmentInformation).then(() => {
+        this.investments.removeInvestment(investmentInformation).then(res => {
             console.log("Investment Removed.")
+            this.diagram.updateChart(res)
         })
 
         this.removeInvestmentRow(row)
