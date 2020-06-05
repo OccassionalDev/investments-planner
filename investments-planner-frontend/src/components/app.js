@@ -20,7 +20,7 @@ class App {
 
         loginBtn.addEventListener("click", () => {
             this.users.loginRequest().then(() =>{
-                if (this.hasErrors(this.users.currentUser)) {
+                if (this.errorHandler.hasErrors(this.users.currentUser)) {
                     this.renderLogin()
                     this.errorHandler.loginError()
                     this.users.resetCurrentUser()
@@ -44,7 +44,7 @@ class App {
 
         signUpBtn.addEventListener("click", () => {
             this.users.signUpRequest().then(() => {
-            if (this.hasErrors(this.users.currentUser)) {
+            if (this.errorHandler.hasErrors(this.users.currentUser)) {
                 this.renderSignUp()
                 this.errorHandler.signUpError(this.users.currentUser)
                 this.users.resetCurrentUser()
@@ -55,16 +55,6 @@ class App {
             }
         })
         })
-    }
-
-    hasErrors(user) {
-        if (user.hasOwnProperty("error")) {
-            return true
-        }
-
-        else {
-            return false
-        }
     }
 
     // Render Main Page

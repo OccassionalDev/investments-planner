@@ -15,4 +15,15 @@ class Errors {
         const errorHeader = document.getElementById("error-header")
         errorHeader.innerHTML = "Invalid Email or Password" 
     }
+
+    
+    hasErrors(user) {
+        if (user.hasOwnProperty("error")) {
+            return true
+        }
+
+        else {
+            return false
+        }
+    }
 }
