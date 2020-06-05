@@ -3,7 +3,7 @@ class Investments {
         this.adapter = new Adapter()
     }
 
-    // Add Investments
+    // Add Investment Request
     addInvestment(userData) {
         const nameField = document.getElementById("invest_form_name")
         const industryField = document.getElementById("invest_form_industry")
@@ -20,7 +20,7 @@ class Investments {
         return this.adapter.postRequest(`/users/${userData.id}/investments`, investmentInformation)
     }
 
-    // Remove Investments
+    // Remove Investment Request
     removeInvestment(investmentInformation) {
         return this.adapter.deleteRequest(`/investments/${investmentInformation.id}`, investmentInformation)
     }
