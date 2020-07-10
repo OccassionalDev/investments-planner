@@ -60,9 +60,14 @@ class App {
     // Render Main Page
     renderMainPage() {
         this.renderLoggedInNav()
-        this.container.innerHTML = `${this.renderChart()} ${this.renderNewInvestmentForm()} ${this.renderTable()}`
+        this.container.innerHTML = `${this.renderChart()} ${this.renderNewInvestmentForm()} ${this.renderSortByButton()} ${this.renderTable()}`
         this.getUserInvestments()
         this.diagram = new Diagram(this.users.currentUser)
+
+        const sortBtn = document.getElementById("sort-by-shares")
+        sortBtn.addEventListener("click", () => {
+            this.sortEvent(this.users.currentUser)
+        })
         
         const newInvestBtn = document.getElementById("add_investment_btn")
         newInvestBtn.addEventListener("click", () => {
@@ -127,6 +132,37 @@ class App {
             <button id="add_investment_btn">Add Investment</button>
         </div>
         `
+    }
+
+    // Render Sort by 
+    renderSortByButton() {
+        return `
+        <button id="sort-by-shares">Sort</button>
+        `
+    }
+
+    sortEvent(user) {
+        const investments = user.investments
+
+        for (let i = 0; i < (investments.length-1); i++) {
+            for (let j = 0; j < (investments.length-1); j++) {
+                if (investments[j].shares < investments[j+1].shares) {
+                    let temp = investments[j+1]
+                    investments[j+1] = investments[j]
+                    investments[j] = temp
+                }
+            }
+        }
+
+        console.log(investments)
+
+        const table = document.getElementById("invest_tbl")
+
+        table.innerHTML = this.renderTable()
+
+        investments.forEach(investment => {
+            this.addInvestmentRow(investment)
+        }) 
     }
 
     // Handle New Investment Request
